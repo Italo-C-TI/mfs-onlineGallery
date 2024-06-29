@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node-fetch": "^2.6.11",
+    "typescript": "^5.5.2"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  }
+}

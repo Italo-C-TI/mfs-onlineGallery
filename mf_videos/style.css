@@ -1,0 +1,22 @@
+body {
+    font-family: sans-serif, pt-sans;
+}
+
+#search {
+    padding: 0.5em;
+    width: 80%;
+}
+
+#searchBtn {
+    padding: 0.5em;
+}
+
+#videos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.video {
+    margin: 1em;
+    width: 30%;
+}

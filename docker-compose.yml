@@ -1,14 +1,32 @@
-version: '3'
+version: "3.8"
+
 services:
   mf_drawer:
     build: ./mf_drawer
     ports:
-      - "8081:80"
+      - "3001:8080"
+    volumes:
+      - ./mf_drawer/src:/app/src
+      - ./mf_drawer/dist:/app/dist
+    environment:
+      - NODE_ENV=development
+
   mf_videos:
     build: ./mf_videos
     ports:
-      - "8082:80"
+      - "3002:8080"
+    volumes:
+      - ./mf_videos/src:/app/src
+      - ./mf_videos/dist:/app/dist
+    environment:
+      - NODE_ENV=development
+
   bff:
     build: ./bff
     ports:
-      - "8080:80"
+      - "3000:8080"
+    volumes:
+      - ./bff/src:/app/src
+      - ./bff/dist:/app/dist
+    environment:
+      - NODE_ENV=development

@@ -1,8 +1,8 @@
-const { YouTubeResponse } = require('./types');
+import { YouTubeResponse } from './types';
 
 test('fetches videos', async () => {
     const response = await fetch('http://localhost:8080/api/videos?query=test');
-    const data = (await response.json()) as typeof YouTubeResponse;
+    const data = (await response.json()) as YouTubeResponse;
 
     expect(data.items).toBeDefined();
     expect(data.items.length).toBeGreaterThan(0);

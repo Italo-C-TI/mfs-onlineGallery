@@ -2,11 +2,13 @@ FROM node:14
 
 WORKDIR /app
 
+COPY package*.json ./
+RUN npm install
+
 COPY . .
 
 RUN npm install typescript -g
-RUN tsc
+RUN tsc && npm run build
 
-EXPOSE 80
-
-CMD ["node", "dist/app.js"]
+EXPOSE 8080
+CMD ["npx", "http-server", "dist", "-p", "8080"]

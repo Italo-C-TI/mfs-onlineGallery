@@ -1,14 +1,9 @@
-import express from 'express';
-import fetch from 'node-fetch';
-import path from 'path';
+import express from "express";
 
 const app = express();
 const PORT = 8080;
 
-app.use('/mf_drawer', express.static(path.join(__dirname, '../../mf_drawer/dist')));
-app.use('/mf_videos', express.static(path.join(__dirname, '../../mf_videos/dist')));
-
-app.get('/api/videos', async (req, res) => {
+app.get('/api/videos', async (req: any, res: any) => {
     const query = req.query.query;
     if (!query) {
         return res.status(400).json({ error: 'Query parameter is required' });

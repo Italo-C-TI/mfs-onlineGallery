@@ -21,10 +21,20 @@ services:
     environment:
       - NODE_ENV=development
 
+  hall:
+    build: ./hall
+    ports:
+      - "8000:8080"
+    volumes:
+      - ./hall/src:/app/src
+      - ./hall/dist:/app/dist
+    environment:
+      - NODE_ENV=development    
+
   bff:
     build: ./bff
     ports:
-      - "3000:8080"
+      - "3004:8080"
     volumes:
       - ./bff/src:/app/src
       - ./bff/dist:/app/dist

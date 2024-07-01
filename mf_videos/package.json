@@ -16,7 +16,7 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "http-server ./dist -p 8080",
+    "start": "http-server ./dist -p 3002",
     "build": "npx tsc && npx copyfiles -u 1 src/**/*.{html,css} dist"
   }
 }

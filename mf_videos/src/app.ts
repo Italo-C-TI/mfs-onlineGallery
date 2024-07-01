@@ -17,4 +17,5 @@ document.getElementById('searchBtn')!.addEventListener('click', () => {
 });
 
 function toggleFavorite(videoId: string) {
+    console.log(`Favorite toggled for video: ${videoId}`);
 }

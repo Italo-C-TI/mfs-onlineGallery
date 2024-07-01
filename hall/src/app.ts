@@ -14,9 +14,8 @@ function loadMicroFrontend(containerId: string, url: string) {
 
 
 if (typeof window !== 'undefined') {
-    console.log("asdka;dksa")
     window.addEventListener('load', () => {
-        loadMicroFrontend('mf_drawer_container', 'http://localhost:3001');
-        loadMicroFrontend('mf_videos_container', 'http://localhost:3002');
+        loadMicroFrontend('mf_drawer_container', 'http://localhost:3004/mf_drawer');
+        loadMicroFrontend('mf_videos_container', 'http://localhost:3004/mf_videos');
     });
 }

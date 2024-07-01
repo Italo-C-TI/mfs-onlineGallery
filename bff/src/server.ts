@@ -1,8 +1,43 @@
 import express from "express";
+import cors from "cors";
+import axios from "axios";
 
 const app = express();
 const PORT = 8080;
 
+app.use(cors({
+    origin: 'http://localhost:8000'
+}));
+app.use(express.json());
+
+
+app.use('/mf_drawer', async (req, res) => {
+    try {
+        const response = await axios({
+            method: req.method,
+            url: `http://mf_drawer:8080${req.url}`,
+            data: req.body,
+            headers: req.headers
+        });
+        res.send(response.data);
+    } catch (error: any) {
+        res.status(error?.response ? error.response?.status : 500).send(error?.message);
+    }
+});
+
+app.use('/mf_videos', async (req, res) => {
+    try {
+        const response = await axios({
+            method: req.method,
+            url: `http://mf_videos:8080${req.url}`,
+            data: req.body,
+            headers: req.headers
+        });
+        res.send(response.data);
+    } catch (error: any) {
+        res.status(error?.response ? error.response?.status : 500).send(error?.message);
+    }
+});
 app.get('/api/videos', async (req: any, res: any) => {
     const query = req.query.query;
     if (!query) {

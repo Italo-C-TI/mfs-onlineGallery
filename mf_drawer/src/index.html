@@ -42,15 +42,22 @@
         }
 
         nav ul li span {
-            margin-left: 5px;
+            margin-left: 12px;
             background-color: #FFD700;
             color: white;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             font-size: 0.8em;
             text-align: center;
             cursor: default;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .active {
+            background-color: #555;
         }
     </style>
 </head>
@@ -60,10 +67,9 @@
             <li id="video-link"><a href="/videos">Vídeos</a></li>
             <li id="favorite-link">
                 <a href="/favoritos">Favoritos</a>
-                <span id="favorite-count"></span>
+                <span id="favorite-count">0</span>
             </li>
         </ul>
     </nav>
-    <div id="content"></div>
 </body>
 </html>

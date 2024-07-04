@@ -1,8 +1,13 @@
-console.log("uhuuu")
 const favoriteCountElement = document.getElementById('favorite-count');
-console.log(favoriteCountElement)
+const videoLinkElement = document.getElementById('video-link');
+const favoriteLinkElement = document.getElementById('favorite-link');
+
 function getFavoriteCount() {
     return 5;
+}
+
+function getRoute() {
+    return window.location.pathname;
 }
 
 function updateFavoriteCount() {
@@ -10,5 +15,14 @@ function updateFavoriteCount() {
     if (favoriteCountElement) favoriteCountElement.textContent = `${count}`;
 }
 
-updateFavoriteCount();
+function highlightCurrentRoute() {
+    const route = getRoute();
+    if ((route === '/videos' || route === '/') && videoLinkElement) {
+        videoLinkElement.classList.add('active');
+    } else if (route === '/favoritos' && favoriteLinkElement) {
+        favoriteLinkElement.classList.add('active');
+    }
+}
 
+updateFavoriteCount();
+highlightCurrentRoute();

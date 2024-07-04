@@ -11,7 +11,7 @@ app.use(cors({
 app.use(express.json());
 
 
-app.use('/mf_drawer', async (req, res) => {
+app.use('/mf_drawer', async (req: express.Request, res: express.Response) => {
     try {
         const response = await axios({
             method: req.method,
@@ -19,13 +19,14 @@ app.use('/mf_drawer', async (req, res) => {
             data: req.body,
             headers: req.headers
         });
+        console.log(response);
         res.send(response.data);
     } catch (error: any) {
         res.status(error?.response ? error.response?.status : 500).send(error?.message);
     }
 });
 
-app.use('/mf_videos', async (req, res) => {
+app.use('/mf_videos', async (req: express.Request, res: express.Response) => {
     try {
         const response = await axios({
             method: req.method,
@@ -38,7 +39,7 @@ app.use('/mf_videos', async (req, res) => {
         res.status(error?.response ? error.response?.status : 500).send(error?.message);
     }
 });
-app.get('/api/videos', async (req: any, res: any) => {
+app.get('/api/videos', async (req: express.Request, res: express.Response) => {
     const query = req.query.query;
     if (!query) {
         return res.status(400).json({ error: 'Query parameter is required' });

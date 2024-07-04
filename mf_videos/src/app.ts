@@ -1,4 +1,17 @@
-import { Video } from "./types";
+interface Video {
+    id: {
+        videoId: string;
+    };
+    snippet: {
+        title: string;
+        description: string;
+        thumbnails: {
+            default: {
+                url: string;
+            };
+        };
+    };
+}
 
 document.getElementById('searchBtn')!.addEventListener('click', () => {
     const query = (document.getElementById('search') as HTMLInputElement).value;
@@ -18,4 +31,5 @@ document.getElementById('searchBtn')!.addEventListener('click', () => {
 
 function toggleFavorite(videoId: string) {
     console.log(`Favorite toggled for video: ${videoId}`);
+    console.log('Current route:', window.location.pathname);
 }

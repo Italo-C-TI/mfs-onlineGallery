@@ -8,7 +8,7 @@ RUN npm install
 COPY . .
 
 RUN npm install typescript -g
-RUN tsc && npm run build
+RUN npm run build
 
 EXPOSE 8080
-CMD ["npx", "http-server", "dist", "-p", "8080"]
+CMD ["npm", "start"]

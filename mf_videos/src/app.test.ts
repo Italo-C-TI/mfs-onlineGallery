@@ -1,4 +1,7 @@
-import { YouTubeResponse } from './types';
+
+interface YouTubeResponse {
+    items: Video[];
+}
 
 test('fetches videos', async () => {
     const response = await fetch('http://localhost:8080/api/videos?query=test');

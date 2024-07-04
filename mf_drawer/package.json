@@ -2,21 +2,24 @@
   "name": "mf_drawer",
   "version": "1.0.0",
   "description": "",
+  "main": "dist/server.js",
   "dependencies": {
-    "node-fetch": "^3.3.2",
-    "http-server": "^14.1.1"
+    "express": "^4.19.2",
+    "http-server": "^14.1.1",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.14.9",
     "@types/node-fetch": "^2.6.11",
+    "jest": "^29.7.0",
     "ts-jest": "^29.1.5",
-    "typescript": "^5.5.2",
-    "@types/jest": "^29.5.12",
-    "jest": "^29.7.0"
+    "typescript": "^5.5.2"
   },
   "scripts": {
     "test": "jest",
-    "start": "http-server ./dist -p 3001",
+    "start": "node dist/server.js",
     "build": "npx tsc && npx copyfiles -u 1 src/**/*.{html,css} dist"
   }
 }

@@ -1,19 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MF Drawer</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            width: 148px;
+            border: 1px solid #221342;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 10px;
+            display: flex;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 16px;
+            align-items: center;
+        }
+
+        nav ul li:hover {
+            background-color: #555;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li span {
+            margin-left: 5px;
+            background-color: #FFD700;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.8em;
+            text-align: center;
+            cursor: default;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="/videos">Vídeos</a></li>
-            <li><a href="/favoritos">Favoritos</a></li>
+            <li id="video-link"><a href="/videos">Vídeos</a></li>
+            <li id="favorite-link">
+                <a href="/favoritos">Favoritos</a>
+                <span id="favorite-count"></span>
+            </li>
         </ul>
     </nav>
     <div id="content"></div>
-    <script src="dist/app.js"></script>
 </body>
 </html>

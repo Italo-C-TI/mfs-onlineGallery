@@ -25,5 +25,5 @@ Dentro do diretório principal do projeto, execute o Docker Compose para constru
 - Abra o navegador e vá para: Hall (Microfrontend Orchestration): `http://localhost:8000`
 
 # PRINTS
-![Screenshot 1](./assets/screenshot1.png)
-![Screenshot 2](./assets/screenshot2.png) 
+![Screenshot 1](./assets/Screenshot1.png)
+![Screenshot 2](./assets/Screenshot2.png) 

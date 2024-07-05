@@ -14,8 +14,6 @@ Clone este repositório em sua máquina local:
 
 2. Configuração de variáveis de ambiente
 - Na raiz do projeto crie um arquivo .env com sua chave de API do YouTube: YOUTUBE_API_KEY=Sua_Youtube_API_Key
-
-# .env
 - Você deve gerar sua api_key de aplicação neste [link](https://developers.google.com/youtube/v3/getting-started?hl=pt-br).
 
 3. Executando o projeto
@@ -23,6 +21,4 @@ Dentro do diretório principal do projeto, execute o Docker Compose para constru
 - docker-compose up --build
 
 4. Acessando o aplicativo
-Abra o navegador e vá para:
-
-Hall (Microfrontend Orchestration): http://localhost:8000
+- Abra o navegador e vá para: Hall (Microfrontend Orchestration): http://localhost:8000

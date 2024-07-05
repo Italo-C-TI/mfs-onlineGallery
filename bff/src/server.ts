@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import axios from "axios";
 import dotenv from 'dotenv';
+import { Video } from "./types";
 dotenv.config();
 
 const app = express();
@@ -50,13 +51,9 @@ app.get('/api/videos', async (req: express.Request, res: express.Response) => {
     try {
         const apiKey = process.env.YOUTUBE_API_KEY;
         const query = req.query.query as string;
-        console.log("req", req)
-        console.log("query", query)
-
         if (!query) {
             return res.status(400).json({ error: 'Query parameter is required' });
         }
-        console.log("apiKey", apiKey)
         const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
             params: {
                 part: 'snippet',
@@ -75,24 +72,52 @@ app.get('/api/videos', async (req: express.Request, res: express.Response) => {
     }
 });
 
-let favoriteVideos: string[] = [];
+let favoriteVideos: Video[] = [];
 app.use(express.json());
-app.post('/api/favorite/:videoId', (req: express.Request, res: express.Response) => {
-    const { videoId } = req.params;
 
-    if (favoriteVideos.includes(videoId)) {
-        return res.status(400).json({ error: 'Video already favorited' });
+app.post('/api/favorite/', (req: express.Request, res: express.Response) => {
+    try {
+        const { video } = req.body;
+        const videoIndex = favoriteVideos.findIndex(v => v?.id?.videoId === video?.id?.videoId);
+
+        if (videoIndex === -1) {
+            favoriteVideos.push(video);
+            return res.status(200).json({ message: 'Video favorited successfully' });
+        } else {
+            return res.status(400).json({ error: 'Video already favorited' });
+        }
+    } catch (error: any) {
+        return res.status(error?.response ? error.response?.status : 500).send(error?.message);
     }
-    favoriteVideos.push(videoId);
-    res.status(200).json({ message: 'Video favorited successfully' });
 });
 
+
+app.delete('/api/favorite/:videoId', (req: express.Request, res: express.Response) => {
+    try {
+        const { videoId } = req.params;
+        const videoIndex = favoriteVideos.findIndex(v => v?.id?.videoId === videoId);
+
+        if (videoIndex === -1) {
+            return res.status(400).json({ error: 'Video already unfavorited' });
+        }
+
+        favoriteVideos.splice(videoIndex, 1);
+        res.status(200).json({ message: 'Video unfavorited successfully' });
+    } catch (error: any) {
+        res.status(error?.response ? error.response?.status : 500).send(error?.message);
+
+    }
+});
+
+
 app.get('/api/favorites', (req: express.Request, res: express.Response) => {
-    res.status(200).json({ favorites: favoriteVideos });
+    try {
+        res.status(200).json({ favorites: favoriteVideos });
+    } catch (error: any) {
+        res.status(error?.response ? error.response?.status : 500).send(error?.message);
+    }
 });
 
 app.listen(PORT, () => {
-    const apiKey = process.env.YOUTUBE_API_KEY;
-    console.log("apiKey:", apiKey)
     console.log(`BFF server is running on http://localhost:${PORT}`);
 });

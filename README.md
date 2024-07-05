@@ -13,7 +13,7 @@ Clone este repositório em sua máquina local:
 - `cd mfs-onlineGallery`
 
 2. Configuração de variáveis de ambiente
-- Na raiz do projeto crie um arquivo .env com sua chave de API do YouTube: YOUTUBE_API_KEY=Sua_Youtube_API_Key
+- Na raiz do projeto crie um arquivo `.env` com sua chave de API do YouTube: `YOUTUBE_API_KEY`=`Sua_Youtube_API_Key`
 - Você deve gerar sua `YOUTUBE_API_KEY` de aplicação neste [link](https://developers.google.com/youtube/v3/getting-started?hl=pt-br).
 - Você deve ativar sua `YOUTUBE_API_KEY` para a api `YouTube Data API v3` - [link](https://console.cloud.google.com/apis/dashboard?hl=pt-br&project=galleryonline-427916).
 
